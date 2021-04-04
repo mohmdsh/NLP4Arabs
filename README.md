@@ -1,10 +1,11 @@
-## Welcome to GitHub Pages
+## Welcome to Lysaan. Lysaan is an Arabc word-- meaning a tongue. 
+This page is an open space to provide NLP tutorials in Arabic, and to disccuss any related issue you might confront in your project. 
 
 You can use the [editor on GitHub](https://github.com/mohmdsh/lysaan/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### Our first tutorial is about :
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
