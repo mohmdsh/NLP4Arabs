@@ -1,9 +1,6 @@
 ## Welcome NLP4Arabs. 
-This page is an open space to provide NLP tutorials in Arabic, and to disccuss any related issue you might confront in your project. 
+This page is an open space that provides NLP tutorials for Arabic text (written/spoken), and  provides a platform for discussing any related issue you might confront in your project. 
 
-You can use the [editor on GitHub](https://github.com/mohmdsh/lysaan/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### Our first tutorial is about :
 
