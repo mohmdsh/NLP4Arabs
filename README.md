@@ -2,9 +2,10 @@
 
 
 
-#### A major question. What does *modeling* in the title indicate?
+**A major question. What does** *modeling* **in the title indicate?**
 
 The basic definition of *modeling* is training the machine to do a certain type of task. 
+
 
 #### The main Objective of this tutorial:
 > * Learn about types of data preparation before any modeling process: manual preparation, NLTK method.
