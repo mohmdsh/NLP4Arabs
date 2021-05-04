@@ -1,8 +1,8 @@
-## A Tutorial of Text Data Preparation for machine learning modeling. 
-This page is an open space that provides NLP tutorials for Arabic text (written/spoken), and  provides a platform for discussing any related issue you might confront in your project. 
+## A Tutorial of Text Data Preparation for Machine Learning modeling. 
 
 
-### Our first tutorial is about :
+
+#### Our first tutorial is about :
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
