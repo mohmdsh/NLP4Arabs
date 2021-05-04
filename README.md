@@ -20,12 +20,12 @@ The first step before fitting text to a machine learning is **cleaning** your da
 ## Cleaning the header and table of contents in Alice's text
 
 This text -- available by  Gutenberg online library, contains a header which is conmposed of Gutenberg project's  introduction, and a table of contents. You have manually to cleany the file by doing the following:
-> * Save the file in your local machine in the same directory of the python file.
-> * Read the file. 
-> * Strip the header [10830:], this slicing operation means start the text from the index 10830 (where the header ends) through the rest of the file.
-> * Lower all upper cases.
-> * Split the file into strings, then join.
-> * Return the variable
+ * Save the file in your local machine in the same directory of the python file.
+ * Read the file. 
+ * Strip the header [10830:], this slicing operation means start the text from the index 10830 (where the header ends) through the rest of the file.
+ * Lower all upper cases.
+ * Split the file into strings, then join.
+ * Return the variable
 
 
 ```python
@@ -87,7 +87,18 @@ As mentioned above, we need to convert any text into numbers to feed it to a mac
 
 ### CountVectorizer tool
 This tool provides a way to tokenize texts, and encode  these tokenzied items. To do so, we do the following steps:
-* 
+* Import CountVectorizer from sklearn library.
+* Load CountVectorizer in a variable to load the transofrm
+* Fit the model, which is an operation to learn the vocabulary from a text.
+* Then, trnasform the model, which is an operation to encode the tokenized items as vectors. 
+
+During any process of encoding words into vectors, you have to be careful that vectors will contain a lot of zeros. These zeros are called *sparse*. Thus, we need an extra operation to turn these *sparse vectors* into real numbers by using a package **scipy.sparse**. This package provides a function called *todarry* that them into numbers. 
+
+```python
+from sklearn.feature_extraction.text import CountVectorizer
+
+
+```
 
 
 
@@ -100,5 +111,6 @@ This tool provides a way to tokenize texts, and encode  these tokenzied items. T
 
 
 
-<b id="f1">1</b> Carroll, L. Alice's Adventures in Wonderland. Project Gutenberg, May 19, 2009. https://www.gutenberg.org/files/28885/28885.txt. \  
-<b id="f2">2</b> Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. Journal of Machine Learning Research, 12, 2825–2830. \
+<b id="f1">1</b> Carroll, L. Alice's Adventures in Wonderland. Project Gutenberg, May 19, 2009. https://www.gutenberg.org/files/28885/28885.txt. 
+
+<b id="f2">2</b> Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. Journal of Machine Learning Research, 12, 2825–2830. 
