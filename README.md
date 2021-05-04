@@ -77,7 +77,24 @@ To view the stripped words:
 ```
 # Prepare Text Data with scikit-learn
 
-Before training your data, you need to enable the machine to identify each string. Since machines can only understand numerical characters, we need to encode each word into numbers either intergers or floating values. This encoding process is called *vectorization* or *feature extraction*. One of the common libraries that offer encoding tools is **scikit-learn**. <sup id="a2">[2](#f2)</sup>
+Before training your data, you need to enable the machine to identify each string. Since machines can only understand numerical characters, we need to encode each word into numbers either intergers or floating values. This encoding process is called *vectorization* or *feature extraction*. One of the common libraries that offer encoding tools is **scikit-learn**. <sup id="a2">[2](#f2)</sup> \
+In this section, we will use three tools in scikit-learn:
+* **CountVectorizer** is a tool that converts a text to word count vectors.
+* **TfidfVectorizer** is a tool that converts a text to word frequency.
+* **HashingVectorizer** is a tool that converts a text to unique intergers. 
+## Bag-of-words model
+As mentioned above, we need to convert any text into numbers to feed it to a machine learning model. Usually, a text, which is our *input*, must be fed to a model to predict the *output*. One of the simples and old-fashioned models is the **Bag-of-Words** model  which is a method of converting words into numbers by disregarding the order of words in its context. \
+
+### CountVectorizer tool
+This tool provides a way to tokenize texts, and encode  these tokenzied items. To do so, we do the following steps:
+* 
+
+
+
+
+
+
+
 
 
 
