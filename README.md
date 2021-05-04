@@ -19,15 +19,17 @@ The basic definition of *modeling* is training the machine to do a certain type 
 The first step before fitting text to a machine learning is **cleaning** your data. Any text contains punctuations, upper cases, white spaces,some characters such as emojis. So, our  task is to prepare our text by splitting it words and deal with puncutation. We will use a text called *Alice's Adventures in Wonderland*. You can find it in the following link https://www.gutenberg.org/files/28885/28885.txt. <sup id="a1">[1](#f1)</sup>
 ## Alice's Adentures in Wonderlang
 
-This text -- available by  Gutenberg online library, contains a header conmposed of an introduction by Gutenberg Project, and a table of contents. You have to prepare your text for modeling by removing these unneeded redundunt stuff. In python, you can do this by using **slicing**. What is silicing? Basically, it is a python operation that can slice a text out of a text. As shown in the Figure 1, each string is identified by a numerical index. The index from the from 
-Thus, we need to extract a new text out of Alice's text by excluding Gutenberg Project's introduction and the table of contents. 
+This text -- available by  Gutenberg online library, contains a header which is conmposed of Gutenberg project's  introduction, and a table of contents. You have manually to cleany the file by doing the following:
+> * save the file in a variable.
+> * Read the file. 
+> * Strip the header [10830:], this slicing operation means start the text from the index 10830 (where the header ends) through the rest of the file.
+> * Lower all upper cases.
+> * Split the file into strings, then join.
+> * Return the variable
+
 
 ```python
-# import library to open 
-import urllib.request
-
-url = "https://www.gutenberg.org/files/28885/28885.txt"
-alice_file_name = urllib.request.urlopen(url)
+alice_file_name = 'alice.txt'
 
 def readAlice(file_name):
     #open the file 
@@ -42,6 +44,10 @@ def readAlice(file_name):
 aliceText = readAlice(alice_file_name)
 aliceText
 
+```
+```python
+>>>print(Alice[:100])
+"             alice's adventures in wonderland                            lewis carroll                 the millennium fulcrum edition 3.0                                 chapter i                     "
 ```
 
 # Preparing Alice's text with S
