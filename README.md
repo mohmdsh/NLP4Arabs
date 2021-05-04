@@ -6,6 +6,10 @@ This page is an open space that provides NLP tutorials for Arabic text (written/
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
+
+```python
+x = open(file)
+```
 ```markdown
 Syntax highlighted code block
 
