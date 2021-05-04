@@ -16,11 +16,9 @@ The basic definition of *modeling* is training the machine to do a certain type 
 > * Vectorization (feature extraction).
 
 # Manaual Text Data Preparations
-The first step before fitting text to a machine learning is **cleaning** your data. Any text contains punctuations, upper cases, white spaces,some characters such as emojis. So, our  task is to prepare our text by splitting it words and deal with puncutation. We will use a text called *Alice Adventures in Wonderland*. You can find it in the following link https://www.gutenberg.org/files/28885/28885.txt.
+The first step before fitting text to a machine learning is **cleaning** your data. Any text contains punctuations, upper cases, white spaces,some characters such as emojis. So, our  task is to prepare our text by splitting it words and deal with puncutation. We will use a text called *Alice Adventures in Wonderland*. You can find it in the following link https://www.gutenberg.org/files/28885/28885.txt. <sup id="a1">[1](#f1)</sup>
 
- Bla bla <sup id="a1">[1](#f1)</sup>
-Carroll, L. Alice's Adventures in Wonderland. Project Gutenberg, May 19, 2009. https://www.gutenberg.org/files/28885/28885.txt. 
-<b id="f1">1</b> Footnote content here. [↩](#a1)
+<b id="f1">1</b> Carroll, L. Alice's Adventures in Wonderland. Project Gutenberg, May 19, 2009. https://www.gutenberg.org/files/28885/28885.txt.  [↩](#a1)
 
 
 
