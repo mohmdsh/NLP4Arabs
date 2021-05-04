@@ -2,9 +2,11 @@
 
 
 
-#### Our first tutorial is about :
+#### A major question before we start. What does *modeling* in the title indicate?:
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+The basic definition of *modeling* is training the machine to do a certain type of task. 
+
+#### The main Objective of this tutorial.
 
 
 ```python
