@@ -51,7 +51,9 @@ To view the file after slicing the header, you can print **aliceText[:100]** as 
 "             alice's adventures in wonderland                            lewis carroll                 the millennium fulcrum edition 3.0                                 chapter i                     "
 ```
 
-## Cleaning the text from white spaces and punctuation.
+## Cleaning the text manually
+You will read the term *tokenization* in any NLP turorials or textbooks. For simplicity, it means breaking down a whole text into words or a string of characters. Each string is called *token*. In this section, we will turn alice's text into tokens or separate words.
+
 Alice's text contains punctuations (such as commas and qoutes), and also abbreviated items (such as she's in ...). You can use regular expression to extract these items. You can do it by either using regular expression or use a ready-python tool. Here, we will use a tool called **string.punctuation**, which has a list of punctuation, to remove the target punctuations. 
 ```markedown
 a list of punctuations !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
@@ -73,8 +75,13 @@ To view the stripped words:
 >>>print(stripped_words[:100])
 ['alices', 'adventures', 'in', 'wonderland', 'lewis', 'carroll', 'the', 'millennium', 'fulcrum', 'edition', '30', 'chapter', 'i', 'down', 'the', 'rabbithole', 'alice', 'was', 'beginning', 'to', 'get', 'very', 'tired', 'of', 'sitting', 'by', 'her', 'sister', 'on', 'the', 'bank', 'and', 'of', 'having', 'nothing', 'to', 'do', 'once', 'or', 'twice', 'she', 'had', 'peeped', 'into', 'the', 'book', 'her', 'sister', 'was', 'reading', 'but', 'it', 'had', 'no', 'pictures', 'or', 'conversations', 'in', 'it', 'and', 'what', 'is', 'the', 'use', 'of', 'a', 'book', 'thought', 'alice', 'without', 'pictures', 'or', 'conversation', 'so', 'she', 'was', 'considering', 'in', 'her', 'own', 'mind', 'as', 'well', 'as', 'she', 'could', 'for', 'the', 'hot', 'day', 'made', 'her', 'feel', 'very', 'sleepy', 'and', 'stupid', 'whether', 'the', 'pleasure']
 ```
+# Prepare Text Data with scikit-learn
+
+Before training your data, you need to enable the machine to identify each string. Since machines can only understand numerical characters, we need to encode each word into numbers either intergers or floating values. This encoding process is called *vectorization* or *feature extraction*. One of the common libraries that offer encoding tools is **scikit-learn**. <sup id="a2">[2](#f2)</sup>
+
 
 
 
 
 <b id="f1">1</b> Carroll, L. Alice's Adventures in Wonderland. Project Gutenberg, May 19, 2009. https://www.gutenberg.org/files/28885/28885.txt.  (#a1)
+<b id="f2">2</b> Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. Journal of Machine Learning Research, 12, 2825–2830. (#a2)
