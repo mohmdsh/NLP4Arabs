@@ -6,7 +6,12 @@
 
 The basic definition of *modeling* is training the machine to do a certain type of task. 
 
-#### The main Objective of this tutorial.
+#### The main Objective of this tutorial:
+> * Learn about types of data preparation before any modeling process: manual preparation, NLTK method.
+> * Learn about two major libraries that provides text preparation and encoding prcoess. 
+#### Main terms that will be  frequently utilize in this tutorial:
+> * Tokenization.
+> * Vectorization (feature extraction).
 
 
 ```python
