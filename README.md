@@ -93,12 +93,107 @@ This tool provides a way to tokenize texts, and encode  these tokenzied items. T
 * Then, trnasform the model, which is an operation to encode the tokenized items as vectors. 
 
 During any process of encoding words into vectors, you have to be careful that vectors will contain a lot of zeros. These zeros are called *sparse*. Thus, we need an extra operation to turn these *sparse vectors* into real numbers by using a package **scipy.sparse**. This package provides a function called *todarry* that them into numbers. 
+* Note that we will use the stripped words that we did in the previous section.
 
 ```python
 from sklearn.feature_extraction.text import CountVectorizer
 
+aliceText = [" Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do:  once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, `and what is the use of a book,' thought Alice `without pictures or conversation?'", " So she was considering in her own mind (as well as she could,for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her."]
 
+vectorizer = CountVectorizer()
+
+# tokenize and build vocab
+vectorizer.fit(aliceText)
+
+
+# show the the tokenized vocabulary 
+print(vectorizer.vocabulary_)
+
+# encode document
+vector = vectorizer.transform(aliceText)
+
+# summarize encoded vector 
+shaped_vector = vector.shape 
+type_vector = type(vector)
+vector_toarray = vector.toarray()
 ```
+To view the tokenized items, you can use a tool in CountVectorizer called *vocabulary_*
+
+```python
+>>>print(shaped_vector)
+{'alice': 0, 'was': 66, 'beginning': 5, 'to': 60, 'get': 22, 'very': 65, 'tired': 59, 'of': 37, 'sitting': 52, 'by': 8, 'her': 26, 'sister': 51, 'on': 38, 'the': 57, 'bank': 3, 'and': 1, 'having': 25, 'nothing': 36, 'do': 18, 'once': 39, 'or': 40, 'twice': 62, 'she': 50, 'had': 24, 'peeped': 42, 'into': 29, 'book': 6, 'reading': 49, 'but': 7, 'it': 31, 'no': 35, 'pictures': 44, 'conversations': 13, 'in': 28, 'what': 68, 'is': 30, 'use': 64, 'thought': 58, 'without': 73, 'conversation': 12, 'so': 54, 'considering': 11, 'own': 41, 'mind': 34, 'as': 2, 'well': 67, 'could': 14, 'for': 21, 'hot': 27, 'day': 17, 'made': 32, 'feel': 20, 'sleepy': 53, 'stupid': 55, 'whether': 70, 'pleasure': 46, 'making': 33, 'daisy': 16, 'chain': 9, 'would': 75, 'be': 4, 'worth': 74, 'trouble': 61, 'getting': 23, 'up': 63, 'picking': 43, 'daisies': 15, 'when': 69, 'suddenly': 56, 'white': 71, 'rabbit': 47, 'with': 72, 'pink': 45, 'eyes': 19, 'ran': 48, 'close': 10}
+```
+Now let's print the shape of the voctorized item
+```python
+>>>print(shaped_vector)
+(2, 76)
+```
+76 indicates that the encoded vectors have a length of 76 in two documents. 
+ 
+Now let's print the type of arrays that have been encoded.
+```python
+>>>print(type_vector)
+<class 'scipy.sparse.csr.csr_matrix'>
+```
+The above output means that the sparse zeros have been turned into vectors.
+
+Finally, let print the array of the encoded vectors
+```python 
+>>>print(vector_toarray)
+[[2 2 0 1 0 1 2 1 1 0 0 0 1 1 0 0 0 0 1 0 0 0 1 0 2 1 2 0 1 1 1 2 0 0 0 1
+  1 3 1 1 3 0 1 0 2 0 0 0 0 1 1 2 1 0 0 0 0 3 1 1 2 0 1 0 1 1 2 0 1 0 0 0
+  0 1 0 0]
+ [0 2 2 0 1 0 0 0 1 1 1 1 0 0 1 1 1 1 0 1 1 1 0 1 0 0 3 1 1 0 0 0 1 1 1 0
+  0 2 0 0 0 1 0 1 0 1 1 1 1 0 2 0 0 1 1 1 1 4 0 0 0 1 0 1 0 1 1 1 0 1 1 1
+  1 0 1 1]]
+```
+After this step, the ecoded vectors are ready to be used in a predictive model.
+
+
+### TfidfVectorizer
+We used CountVectorizer function to count the words, which is a very basic method. A serious problem that you will face is that some words such as function words will be highly frequent, which means that providing their counts will not be helpful. Thus, machine learning specialists suggest an alternative method which is *word frequency* instead of the word counts. They created a method called *Term Frequency - Inverse Document*. The term is hypentated which carries two meanings. First, *term frequency* which means the count of words within a document. The other part of term *Inverse Document Frequency* meaning downscale words that are freqeunt across documents. 
+
+In other words, Tfidf vectorization method will provide the frequeny words in a document but not across documents. 
+
+```python 
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+aliceText = [" Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do:  once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, `and what is the use of a book,' thought Alice `without pictures or conversation?'", " So she was considering in her own mind (as well as she could,for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.", "There was nothing so VERY remarkable in that; nor did Alice think it so VERY much out of the way to hear the Rabbit say to itself, `Oh dear!  Oh dear!  I shall be late!'  (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually TOOK A WATCH OUT OF ITS WAISTCOAT-POCKET, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge."]
+
+# create the transform
+vectorizer = TfidfVectorizer()
+
+# tokenize and build vocab 
+vectorizer.fit(aliceText)
+# show the tokenized vocabulary
+vecotrized_vocab = vectorizer.vocabulary_
+# show the inversed documents
+idf_vectors = vectorizer.idf_
+# transform
+vector = vectorizer.transform([aliceText[0]])
+
+# show the shape of vectors
+vector_shape = vector.shape
+
+# vectory into arrays
+vector_toarray =vector.toarray()
+```
+* Let's print the counts of each word by using *.vocabulary_* function. 
+```python
+>>>print(vecotrized_vocab)
+{'alice': 4, 'was': 123, 'beginning': 12, 'to': 114, 'get': 39, 'very': 121, 'tired': 113, 'of': 70, 'sitting': 98, 'by': 16, 'her': 46, 'sister': 97, 'on': 72, 'the': 106, 'bank': 9, 'and': 6, 'having': 43, 'nothing': 68, 'do': 29, 'once': 73, 'or': 74, 'twice': 117, 'she': 96, 'had': 41, 'peeped': 79, 'into': 51, 'book': 13, 'reading': 89, 'but': 15, 'it': 53, 'no': 66, 'pictures': 81, 'conversations': 21, 'in': 50, 'what': 127, 'is': 52, 'use': 120, 'thought': 111, 'without': 132, 'conversation': 20, 'so': 100, 'considering': 19, 'own': 78, 'mind': 62, 'as': 7, 'well': 126, 'could': 22, 'for': 37, 'hot': 48, 'day': 26, 'made': 60, 'feel': 33, 'sleepy': 99, 'stupid': 102, 'whether': 129, 'pleasure': 83, 'making': 61, 'daisy': 25, 'chain': 17, 'would': 135, 'be': 10, 'worth': 134, 'trouble': 116, 'getting': 40, 'up': 119, 'picking': 80, 'daisies': 24, 'when': 128, 'suddenly': 103, 'white': 130, 'rabbit': 87, 'with': 131, 'pink': 82, 'eyes': 32, 'ran': 88, 'close': 18, 'there': 108, 'remarkable': 90, 'that': 105, 'nor': 67, 'did': 28, 'think': 109, 'much': 63, 'out': 76, 'way': 125, 'hear': 44, 'say': 91, 'itself': 55, 'oh': 71, 'dear': 27, 'shall': 95, 'late': 58, 'over': 77, 'afterwards': 3, 'occurred': 69, 'ought': 75, 'have': 42, 'wondered': 133, 'at': 8, 'this': 110, 'time': 112, 'all': 5, 'seemed': 93, 'quite': 86, 'natural': 64, 'actually': 1, 'took': 115, 'watch': 124, 'its': 54, 'waistcoat': 122, 'pocket': 84, 'looked': 59, 'then': 107, 'hurried': 49, 'started': 101, 'feet': 34, 'flashed': 36, 'across': 0, 'never': 65, 'before': 11, 'seen': 94, 'either': 31, 'take': 104, 'burning': 14, 'curiosity': 23, 'field': 35, 'after': 2, 'fortunately': 38, 'just': 56, 'see': 92, 'pop': 85, 'down': 30, 'large': 57, 'hole': 47, 'under': 118, 'hedge': 45}
+
+* Let's print the shape of vectors to show how many words were vectorized in *aliceText*.
+```python
+>>>print(vector_shape)
+(1, 136)
+```
+The output means that the number of vocabulary learned from *aliceText* is 40.  
+
+
+
+## HashingVeectorizer
+So far, we learned how to do counting and frequecies of words of a text. However, if we have a corpus that contain millions of words, we will need large vectors for encoding these words. As a consequence, our machine will need more memory to process them. The *hashing* method is a process that uses a one way hash of words to convert them into intergers.  
 
 
 
