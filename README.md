@@ -307,7 +307,7 @@ vector_to_array = vector.toarray()
    0.38569461  0.12856487]]
  ```
 
-# Preparing Text Data With Keras 
+# Preparing Text Data With Keras<sup id="a3">[3](#f3)</sup> 
 
 Keras is a python library that provides some tools to prepare your data before modeling your data. In this section, we will learn how to use some tools similar to the ones in *sklearn*. These tools arre:
 * Tokenizer API
@@ -405,4 +405,4 @@ tokenized_alice = text_to_word_sequence(aliceText)
 
 <b id="f2">2</b> Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. Journal of Machine Learning Research, 12, 2825–2830.
 
-<b id="f3">3</b>  https://jalammar.github.io/illustrated-word2vec/
+<b id="f3">3</b> Chollet, F., et al. (2015). Keras. https://github.com/fchollet/keras. GitHub.
