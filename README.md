@@ -328,4 +328,5 @@ Before we implement Keras, we have to define a few of terms:
 <b id="f1">1</b> Carroll, L. Alice's Adventures in Wonderland. Project Gutenberg, May 19, 2009. https://www.gutenberg.org/files/28885/28885.txt. 
 
 <b id="f2">2</b> Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. Journal of Machine Learning Research, 12, 2825–2830.
+
 <b id="f3">3</b>  https://jalammar.github.io/illustrated-word2vec/
