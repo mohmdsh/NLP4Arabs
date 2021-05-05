@@ -328,6 +328,7 @@ tokenized_alice = text_to_word_sequence(aliceText)
 ```
 
 * Show some tokenized items
+
 ```python 
 >>>print(tokenized_alice[:100])
 ['alice', 'was', 'beginning', 'to', 'get', 'very', 'tired', 'of', 'sitting', 'by', 'her', 'sister', 'on', 'the', 'bank', 'and', 'of', 'having', 'nothing', 'to', 'do', 'once', 'or', 'twice', 'she', 'had', 'peeped', 'into', 'the', 'book', 'her', 'sister', 'was', 'reading', 'but', 'it', 'had', 'no', 'pictures', 'or', 'conversations', 'in', 'it', 'and', 'what', 'is', 'the', 'use', 'of', 'a', 'book', "'", 'thought', 'alice', 'without', 'pictures', 'or', 'conversation', "'"]
@@ -365,6 +366,7 @@ print(alice_to_set)
 >>>print(vocab_size)
 42
 ```
+
 * Let's show the converted item to one hot enocding.
 ```python 
 print(vector)
@@ -376,6 +378,7 @@ print(vector)
 Keras provides this  that can vectroize texts by either converting them into a sequence of integers or into vectors that are based on word counts, tf-idf, or frequency. Also, this tool provides convient way to fit your test which can be used later to prepare your corpus for deep learning. After fitting your corpus, then you can use different attributes to observe what has been learned from the corpus. 
 
 * Let's try the Tokenizer with *aliceText3
+
 ```python 
 from keras.preprocessing.text import Tokenizer
 
