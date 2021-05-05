@@ -178,23 +178,118 @@ vector_shape = vector.shape
 # vectory into arrays
 vector_toarray =vector.toarray()
 ```
+
 * Let's print the counts of each word by using *.vocabulary_* function. 
 ```python
 >>>print(vecotrized_vocab)
 {'alice': 4, 'was': 123, 'beginning': 12, 'to': 114, 'get': 39, 'very': 121, 'tired': 113, 'of': 70, 'sitting': 98, 'by': 16, 'her': 46, 'sister': 97, 'on': 72, 'the': 106, 'bank': 9, 'and': 6, 'having': 43, 'nothing': 68, 'do': 29, 'once': 73, 'or': 74, 'twice': 117, 'she': 96, 'had': 41, 'peeped': 79, 'into': 51, 'book': 13, 'reading': 89, 'but': 15, 'it': 53, 'no': 66, 'pictures': 81, 'conversations': 21, 'in': 50, 'what': 127, 'is': 52, 'use': 120, 'thought': 111, 'without': 132, 'conversation': 20, 'so': 100, 'considering': 19, 'own': 78, 'mind': 62, 'as': 7, 'well': 126, 'could': 22, 'for': 37, 'hot': 48, 'day': 26, 'made': 60, 'feel': 33, 'sleepy': 99, 'stupid': 102, 'whether': 129, 'pleasure': 83, 'making': 61, 'daisy': 25, 'chain': 17, 'would': 135, 'be': 10, 'worth': 134, 'trouble': 116, 'getting': 40, 'up': 119, 'picking': 80, 'daisies': 24, 'when': 128, 'suddenly': 103, 'white': 130, 'rabbit': 87, 'with': 131, 'pink': 82, 'eyes': 32, 'ran': 88, 'close': 18, 'there': 108, 'remarkable': 90, 'that': 105, 'nor': 67, 'did': 28, 'think': 109, 'much': 63, 'out': 76, 'way': 125, 'hear': 44, 'say': 91, 'itself': 55, 'oh': 71, 'dear': 27, 'shall': 95, 'late': 58, 'over': 77, 'afterwards': 3, 'occurred': 69, 'ought': 75, 'have': 42, 'wondered': 133, 'at': 8, 'this': 110, 'time': 112, 'all': 5, 'seemed': 93, 'quite': 86, 'natural': 64, 'actually': 1, 'took': 115, 'watch': 124, 'its': 54, 'waistcoat': 122, 'pocket': 84, 'looked': 59, 'then': 107, 'hurried': 49, 'started': 101, 'feet': 34, 'flashed': 36, 'across': 0, 'never': 65, 'before': 11, 'seen': 94, 'either': 31, 'take': 104, 'burning': 14, 'curiosity': 23, 'field': 35, 'after': 2, 'fortunately': 38, 'just': 56, 'see': 92, 'pop': 85, 'down': 30, 'large': 57, 'hole': 47, 'under': 118, 'hedge': 45}
+```
 
 * Let's print the shape of vectors to show how many words were vectorized in *aliceText*.
 ```python
 >>>print(vector_shape)
 (1, 136)
 ```
-The output means that the number of vocabulary learned from *aliceText* is 40.  
+The output means that the number of vocabulary learned from *aliceText* is 136.  
 
+```python 
+>>>print(idf_vectors)
+[1.69314718 1.69314718 1.69314718 1.69314718 1.28768207 1.69314718
+ 1.         1.69314718 1.69314718 1.69314718 1.28768207 1.69314718
+ 1.69314718 1.69314718 1.69314718 1.28768207 1.28768207 1.69314718
+ 1.69314718 1.69314718 1.69314718 1.69314718 1.69314718 1.69314718
+ 1.69314718 1.69314718 1.69314718 1.69314718 1.69314718 1.69314718
+ 1.69314718 1.69314718 1.69314718 1.69314718 1.69314718 1.69314718
+ 1.69314718 1.28768207 1.69314718 1.69314718 1.69314718 1.28768207
+ 1.69314718 1.69314718 1.69314718 1.69314718 1.         1.69314718
+ 1.69314718 1.69314718 1.         1.69314718 1.69314718 1.28768207
+ 1.69314718 1.69314718 1.69314718 1.69314718 1.69314718 1.69314718
+ 1.69314718 1.69314718 1.28768207 1.69314718 1.69314718 1.69314718
+ 1.69314718 1.69314718 1.28768207 1.69314718 1.         1.69314718
+ 1.28768207 1.69314718 1.28768207 1.69314718 1.69314718 1.69314718
+ 1.69314718 1.69314718 1.69314718 1.69314718 1.69314718 1.69314718
+ 1.69314718 1.69314718 1.69314718 1.28768207 1.28768207 1.69314718
+ 1.69314718 1.69314718 1.69314718 1.69314718 1.69314718 1.69314718
+ 1.         1.69314718 1.69314718 1.69314718 1.28768207 1.69314718
+ 1.69314718 1.69314718 1.69314718 1.69314718 1.         1.69314718
+ 1.69314718 1.69314718 1.69314718 1.28768207 1.69314718 1.69314718
+ 1.28768207 1.69314718 1.69314718 1.69314718 1.69314718 1.69314718
+ 1.69314718 1.         1.69314718 1.         1.69314718 1.69314718
+ 1.69314718 1.69314718 1.28768207 1.69314718 1.69314718 1.28768207
+ 1.69314718 1.69314718 1.69314718 1.69314718]
+```
+* Let's show the array of the vectors
+```python
+>>>print(vector.toarray())
+[[0.         0.         0.         0.         0.19659101 0.
+  0.15267046 0.         0.         0.12924678 0.         0.
+  0.12924678 0.25849355 0.         0.0982955  0.0982955  0.
+  0.         0.         0.12924678 0.12924678 0.         0.
+  0.         0.         0.         0.         0.         0.12924678
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.12924678 0.         0.19659101
+  0.         0.12924678 0.         0.         0.15267046 0.
+  0.         0.         0.07633523 0.12924678 0.12924678 0.19659101
+  0.         0.         0.         0.         0.         0.
+  0.         0.         0.         0.         0.         0.
+  0.12924678 0.         0.0982955  0.         0.22900568 0.
+  0.0982955  0.12924678 0.29488651 0.         0.         0.
+  0.         0.12924678 0.         0.25849355 0.         0.
+  0.         0.         0.         0.         0.         0.12924678
+  0.         0.         0.         0.         0.         0.
+  0.07633523 0.25849355 0.12924678 0.         0.         0.
+  0.         0.         0.         0.         0.22900568 0.
+  0.         0.         0.         0.0982955  0.         0.12924678
+  0.19659101 0.         0.         0.12924678 0.         0.
+  0.12924678 0.07633523 0.         0.15267046 0.         0.
+  0.         0.12924678 0.         0.         0.         0.
+  0.12924678 0.         0.         0.        ]]
+
+```
 
 
 ## HashingVeectorizer
-So far, we learned how to do counting and frequecies of words of a text. However, if we have a corpus that contain millions of words, we will need large vectors for encoding these words. As a consequence, our machine will need more memory to process them. The *hashing* method is a process that uses a one way hash of words to convert them into intergers.  
+So far, we learned how to do counting and frequecies of words of a text. However, if we have a corpus that contain millions of words, we will need large vectors for encoding these words. As a consequence, our machine will need more memory to process them. The *hashing* method is a process that uses a one way hash of words to convert them into intergers.  However, the one-way hashing encoding has a major drawback which is once you convert words into intergers, you cannot encode them back to words. 
 
+```python 
+from sklearn.feature_extraction.text import HashingVectorizer
+
+
+aliceText = [" Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do:  once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, `and what is the use of a book,' thought Alice `without pictures or conversation?'", " So she was considering in her own mind (as well as she could,for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.", "There was nothing so VERY remarkable in that; nor did Alice think it so VERY much out of the way to hear the Rabbit say to itself, `Oh dear!  Oh dear!  I shall be late!'  (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually TOOK A WATCH OUT OF ITS WAISTCOAT-POCKET, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge."]
+
+# create the hashing transform
+vectorizer = HashingVectorizer(n_features=20) # encode  a smaple of 20-element sparse array out of the documents.
+
+# encode document
+vector = vectorizer.transform(aliceText)
+
+# show the vector shape
+vector_shape = vector.shape
+
+# show the array of vectors 
+vector_to_array = vector.toarray()
+```
+
+```python 
+>>>print(vector_shape)
+(3, 20)
+```
+
+```python 
+>>>print(vector_to_array)
+[[ 0.12909944  0.25819889  0.12909944  0.         -0.25819889 -0.25819889
+   0.          0.          0.25819889  0.12909944  0.          0.25819889
+   0.          0.          0.64549722 -0.12909944  0.38729833  0.12909944
+   0.          0.12909944]
+ [-0.1132277  -0.1132277   0.         -0.22645541 -0.33968311 -0.33968311
+  -0.33968311  0.1132277  -0.1132277   0.33968311 -0.22645541 -0.1132277
+   0.          0.1132277   0.1132277  -0.1132277   0.33968311  0.
+  -0.45291081 -0.1132277 ]
+ [ 0.06428243  0.          0.25712974  0.         -0.12856487 -0.25712974
+  -0.12856487  0.1928473   0.32141217  0.32141217 -0.25712974  0.32141217
+  -0.06428243  0.12856487  0.         -0.25712974  0.38569461 -0.12856487
+   0.38569461  0.12856487]]
+```
 
 
 
