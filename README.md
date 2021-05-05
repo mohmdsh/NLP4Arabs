@@ -75,7 +75,7 @@ To view the stripped words:
 >>>print(stripped_words[:100])
 ['alices', 'adventures', 'in', 'wonderland', 'lewis', 'carroll', 'the', 'millennium', 'fulcrum', 'edition', '30', 'chapter', 'i', 'down', 'the', 'rabbithole', 'alice', 'was', 'beginning', 'to', 'get', 'very', 'tired', 'of', 'sitting', 'by', 'her', 'sister', 'on', 'the', 'bank', 'and', 'of', 'having', 'nothing', 'to', 'do', 'once', 'or', 'twice', 'she', 'had', 'peeped', 'into', 'the', 'book', 'her', 'sister', 'was', 'reading', 'but', 'it', 'had', 'no', 'pictures', 'or', 'conversations', 'in', 'it', 'and', 'what', 'is', 'the', 'use', 'of', 'a', 'book', 'thought', 'alice', 'without', 'pictures', 'or', 'conversation', 'so', 'she', 'was', 'considering', 'in', 'her', 'own', 'mind', 'as', 'well', 'as', 'she', 'could', 'for', 'the', 'hot', 'day', 'made', 'her', 'feel', 'very', 'sleepy', 'and', 'stupid', 'whether', 'the', 'pleasure']
 ```
-# Prepare Text Data with scikit-learn
+# Preparing Text Data with scikit-learn
 
 Before training your data, you need to enable the machine to identify each string. Since machines can only understand numerical characters, we need to encode each word into numbers either intergers or floating values. This encoding process is called *vectorization* or *feature extraction*. One of the common libraries that offer encoding tools is **scikit-learn**. <sup id="a2">[2](#f2)</sup> \
 In this section, we will use three tools in scikit-learn:
@@ -150,7 +150,7 @@ Finally, let print the array of the encoded vectors
 After this step, the ecoded vectors are ready to be used in a predictive model.
 
 
-### TfidfVectorizer
+### Tfidf Vectorizer tool
 We used CountVectorizer function to count the words, which is a very basic method. A serious problem that you will face is that some words such as function words will be highly frequent, which means that providing their counts will not be helpful. Thus, machine learning specialists suggest an alternative method which is *word frequency* instead of the word counts. They created a method called *Term Frequency - Inverse Document*. The term is hypentated which carries two meanings. First, *term frequency* which means the count of words within a document. The other part of term *Inverse Document Frequency* meaning downscale words that are freqeunt across documents. 
 
 In other words, Tfidf vectorization method will provide the frequeny words in a document but not across documents. 
@@ -290,7 +290,7 @@ vector_to_array = vector.toarray()
   -0.06428243  0.12856487  0.         -0.25712974  0.38569461 -0.12856487
    0.38569461  0.12856487]]
 ```
-
+# Preparing Text Data With Keras 
 
 
 
