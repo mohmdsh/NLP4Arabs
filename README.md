@@ -124,20 +124,25 @@ To view the tokenized items, you can use a tool in CountVectorizer called *vocab
 {'alice': 0, 'was': 66, 'beginning': 5, 'to': 60, 'get': 22, 'very': 65, 'tired': 59, 'of': 37, 'sitting': 52, 'by': 8, 'her': 26, 'sister': 51, 'on': 38, 'the': 57, 'bank': 3, 'and': 1, 'having': 25, 'nothing': 36, 'do': 18, 'once': 39, 'or': 40, 'twice': 62, 'she': 50, 'had': 24, 'peeped': 42, 'into': 29, 'book': 6, 'reading': 49, 'but': 7, 'it': 31, 'no': 35, 'pictures': 44, 'conversations': 13, 'in': 28, 'what': 68, 'is': 30, 'use': 64, 'thought': 58, 'without': 73, 'conversation': 12, 'so': 54, 'considering': 11, 'own': 41, 'mind': 34, 'as': 2, 'well': 67, 'could': 14, 'for': 21, 'hot': 27, 'day': 17, 'made': 32, 'feel': 20, 'sleepy': 53, 'stupid': 55, 'whether': 70, 'pleasure': 46, 'making': 33, 'daisy': 16, 'chain': 9, 'would': 75, 'be': 4, 'worth': 74, 'trouble': 61, 'getting': 23, 'up': 63, 'picking': 43, 'daisies': 15, 'when': 69, 'suddenly': 56, 'white': 71, 'rabbit': 47, 'with': 72, 'pink': 45, 'eyes': 19, 'ran': 48, 'close': 10}
 ```
 Now let's print the shape of the voctorized item
+
 ```python
 >>>print(shaped_vector)
 (2, 76)
 ```
+
 76 indicates that the encoded vectors have a length of 76 in two documents. 
  
 Now let's print the type of arrays that have been encoded.
+
 ```python
 >>>print(type_vector)
 <class 'scipy.sparse.csr.csr_matrix'>
 ```
+
 The above output means that the sparse zeros have been turned into vectors.
 
-Finally, let print the array of the encoded vectors
+Finally, let's print the array of the encoded vectors.
+
 ```python 
 >>>print(vector_toarray)
 [[2 2 0 1 0 1 2 1 1 0 0 0 1 1 0 0 0 0 1 0 0 0 1 0 2 1 2 0 1 1 1 2 0 0 0 1
@@ -147,6 +152,7 @@ Finally, let print the array of the encoded vectors
   0 2 0 0 0 1 0 1 0 1 1 1 1 0 2 0 0 1 1 1 1 4 0 0 0 1 0 1 0 1 1 1 0 1 1 1
   1 0 1 1]]
 ```
+
 After this step, the ecoded vectors are ready to be used in a predictive model.
 
 
@@ -180,16 +186,19 @@ vector_toarray =vector.toarray()
 ```
 
 * Let's print the counts of each word by using *.vocabulary_* function. 
+
 ```python
 >>>print(vecotrized_vocab)
 {'alice': 4, 'was': 123, 'beginning': 12, 'to': 114, 'get': 39, 'very': 121, 'tired': 113, 'of': 70, 'sitting': 98, 'by': 16, 'her': 46, 'sister': 97, 'on': 72, 'the': 106, 'bank': 9, 'and': 6, 'having': 43, 'nothing': 68, 'do': 29, 'once': 73, 'or': 74, 'twice': 117, 'she': 96, 'had': 41, 'peeped': 79, 'into': 51, 'book': 13, 'reading': 89, 'but': 15, 'it': 53, 'no': 66, 'pictures': 81, 'conversations': 21, 'in': 50, 'what': 127, 'is': 52, 'use': 120, 'thought': 111, 'without': 132, 'conversation': 20, 'so': 100, 'considering': 19, 'own': 78, 'mind': 62, 'as': 7, 'well': 126, 'could': 22, 'for': 37, 'hot': 48, 'day': 26, 'made': 60, 'feel': 33, 'sleepy': 99, 'stupid': 102, 'whether': 129, 'pleasure': 83, 'making': 61, 'daisy': 25, 'chain': 17, 'would': 135, 'be': 10, 'worth': 134, 'trouble': 116, 'getting': 40, 'up': 119, 'picking': 80, 'daisies': 24, 'when': 128, 'suddenly': 103, 'white': 130, 'rabbit': 87, 'with': 131, 'pink': 82, 'eyes': 32, 'ran': 88, 'close': 18, 'there': 108, 'remarkable': 90, 'that': 105, 'nor': 67, 'did': 28, 'think': 109, 'much': 63, 'out': 76, 'way': 125, 'hear': 44, 'say': 91, 'itself': 55, 'oh': 71, 'dear': 27, 'shall': 95, 'late': 58, 'over': 77, 'afterwards': 3, 'occurred': 69, 'ought': 75, 'have': 42, 'wondered': 133, 'at': 8, 'this': 110, 'time': 112, 'all': 5, 'seemed': 93, 'quite': 86, 'natural': 64, 'actually': 1, 'took': 115, 'watch': 124, 'its': 54, 'waistcoat': 122, 'pocket': 84, 'looked': 59, 'then': 107, 'hurried': 49, 'started': 101, 'feet': 34, 'flashed': 36, 'across': 0, 'never': 65, 'before': 11, 'seen': 94, 'either': 31, 'take': 104, 'burning': 14, 'curiosity': 23, 'field': 35, 'after': 2, 'fortunately': 38, 'just': 56, 'see': 92, 'pop': 85, 'down': 30, 'large': 57, 'hole': 47, 'under': 118, 'hedge': 45}
 ```
 
 * Let's print the shape of vectors to show how many words were vectorized in *aliceText*.
+
 ```python
 >>>print(vector_shape)
 (1, 136)
 ```
+
 The output means that the number of vocabulary learned from *aliceText* is 136.  
 
 ```python 
@@ -218,7 +227,9 @@ The output means that the number of vocabulary learned from *aliceText* is 136.
  1.69314718 1.69314718 1.28768207 1.69314718 1.69314718 1.28768207
  1.69314718 1.69314718 1.69314718 1.69314718]
 ```
+
 * Let's show the array of the vectors
+
 ```python
 >>>print(vector.toarray())
 [[0.         0.         0.         0.         0.19659101 0.
@@ -244,7 +255,6 @@ The output means that the number of vocabulary learned from *aliceText* is 136.
   0.12924678 0.07633523 0.         0.15267046 0.         0.
   0.         0.12924678 0.         0.         0.         0.
   0.12924678 0.         0.         0.        ]]
-
 ```
 
 
@@ -269,12 +279,13 @@ vector_shape = vector.shape
 # show the array of vectors 
 vector_to_array = vector.toarray()
 ```
-
+* Print the sahpe
 ```python 
 >>>print(vector_shape)
 (3, 20)
 ```
 
+* Print the vector to array
 ```python 
 >>>print(vector_to_array)
 [[ 0.12909944  0.25819889  0.12909944  0.         -0.25819889 -0.25819889
