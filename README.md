@@ -309,15 +309,86 @@ vector_to_array = vector.toarray()
 
 # Preparing Text Data With Keras 
 
-Before we implement Keras, we have to define a few of terms:
+Keras is a python library that provides some tools to prepare your data before modeling your data. In this section, we will learn how to use some tools similar to the ones in *sklearn*. These tools arre:
+* Tokenizer API
+* Hashing_trick
+* One_hot encoder.
 
-1. *Word embedding*: a method of representing words that have similar meanings to have similar representations. For more details, see Jay Alammar's <sup id="a3">[3](#f3)</sup>  illustrated tutorial about word2vec.
-2. *Word2Vec* : a mathmatical method used for learning word embeddings from large datasets. Word2vec has two different model for learning word embeddings:
-```2.1. Continuous Bag-of-Words (CBOW): a model for learning word embedding bas on the context.
-```2.2. Continuous Skip-Gram Model: a model that learns word embedding based on the prediction of words that surrounds a target word. 
-3. GloVe:
-4. 
-     
+Keras provides a good tool for tokenizing your corpus. This tool is *text_to_word_sequence*. Again, we will use *aliceText* from previous sections. 
+
+```python
+from keras.preprocessing.text import text_to_word_sequence
+
+aliceText = [" Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do:  once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, `and what is the use of a book,' thought Alice `without pictures or conversation?'", " So she was considering in her own mind (as well as she could,for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.", "There was nothing so VERY remarkable in that; nor did Alice think it so VERY much out of the way to hear the Rabbit say to itself, `Oh dear!  Oh dear!  I shall be late!'  (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually TOOK A WATCH OUT OF ITS WAISTCOAT-POCKET, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge."]
+
+# tokenize the document
+tokenized_alice = text_to_word_sequence(aliceText)
+```
+
+* Show the tokenized item
+```python 
+>>>print(tokenized_alice)
+['alice',
+ 'was',
+ 'beginning',
+ 'to',
+ 'get',
+ 'very',
+ 'tired',
+ 'of',
+ 'sitting',
+ 'by',
+ 'her',
+ 'sister',
+ 'on',
+ 'the',
+ 'bank',
+ 'and',
+ 'of',
+ 'having',
+ 'nothing',
+ 'to',
+ 'do',
+ 'once',
+ 'or',
+ 'twice',
+ 'she',
+ 'had',
+ 'peeped',
+ 'into',
+ 'the',
+ 'book',
+ 'her',
+ 'sister',
+ 'was',
+ 'reading',
+ 'but',
+ 'it',
+ 'had',
+ 'no',
+ 'pictures',
+ 'or',
+ 'conversations',
+ 'in',
+ 'it',
+ 'and',
+ 'what',
+ 'is',
+ 'the',
+ 'use',
+ 'of',
+ 'a',
+ 'book',
+ "'",
+ 'thought',
+ 'alice',
+ 'without',
+ 'pictures',
+ 'or',
+ 'conversation',
+ "'"]
+```
+
 
 
 
