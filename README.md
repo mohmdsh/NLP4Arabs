@@ -313,9 +313,10 @@ Before we implement Keras, we have to define a few of terms:
 
 1. *Word embedding*: a method of representing words that have similar meanings to have similar representations. For more details, see Jay Alammar's <sup id="a3">[3](#f3)</sup>  illustrated tutorial about word2vec.
 2. *Word2Vec* : a mathmatical method used for learning word embeddings from large datasets. Word2vec has two different model for learning word embeddings:
-    2.1. Continuous Bag-of-Words (CBOW): a model for learning word embedding bas on the context.
-    2.2. Continuous Skip-Gram Model: a model that learns word embedding based on the prediction of words that surrounds a target word. 
+```2.1. Continuous Bag-of-Words (CBOW): a model for learning word embedding bas on the context.
+```2.2. Continuous Skip-Gram Model: a model that learns word embedding based on the prediction of words that surrounds a target word. 
 3. GloVe:
+4. 
      
 
 
