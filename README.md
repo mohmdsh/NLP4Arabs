@@ -359,6 +359,7 @@ The next step is to get the size in order to feed it into one_hot() function.
 print(alice_to_set)
 {'twice', 'once', 'what', 'peeped', 'use', 'no', 'beginning', 'thought', 'was', 'do', 'but', 'is', 'into', 'the', 'it', 'a', 'in', 'having', 'pictures', 'nothing', "'", 'without', 'get', 'conversation', 'her', 'by', 'of', 'had', 'reading', 'tired', 'sister', 'bank', 'conversations', 'very', 'or', 'on', 'book', 'and', 'she', 'alice', 'sitting', 'to'}
 ```
+
 * Let's show the size of the set.
 ```python 
 >>>print(vocab_size)
@@ -370,16 +371,64 @@ print(vector)
 [41, 31, 50, 54, 52, 18, 13, 13, 1, 54, 10, 40, 21, 22, 3, 3, 13, 47, 11, 54, 36, 14, 14, 8, 34, 16, 10, 3, 22, 42, 10, 40, 31, 38, 27, 1, 16, 52, 25, 14, 4, 10, 1, 3, 8, 15, 22, 29, 13, 11, 42, 37, 43, 41, 44, 25, 14, 50, 37]
 ```
 
+### Tokenizer API 
+
+Keras provides this  that can vectroize texts by either converting them into a sequence of integers or into vectors that are based on word counts, tf-idf, or frequency. Also, this tool provides convient way to fit your test which can be used later to prepare your corpus for deep learning. After fitting your corpus, then you can use different attributes to observe what has been learned from the corpus. 
+
+* Let's try the Tokenizer with *aliceText3
+```python 
+from keras.preprocessing.text import Tokenizer
+
+aliceText3 = [" Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do:  once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, `and what is the use of a book,' thought Alice `without pictures or conversation?' ", " So she was considering in her own mind (as well as she could,for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.", "There was nothing so VERY remarkable in that; nor did Alice think it so VERY much out of the way to hear the Rabbit say to itself, `Oh dear!  Oh dear!  I shall be late!'  (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually TOOK A WATCH OUT OF ITS WAISTCOAT-POCKET, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge."]
+
+# create the tokenizer
+tokenize = Tokenizer()
+# fit the tokenizer on the documents
+tokenize.fit_on_texts(aliceText3)
+```
+
+* One thing that is learned from  the fitted model is a dictionary of words with their counts.
+
+```python
+>>>print(tokenize.word_counts)
+OrderedDict([('alice', 4), ('was', 5), ('beginning', 1), ('to', 9), ('get', 1), ('very', 4), ('tired', 1), ('of', 8), ('sitting', 1), ('by', 2), ('her', 8), ('sister', 2), ('on', 2), ('the', 13), ('bank', 1), ('and', 8), ('having', 1), ('nothing', 2), ('do', 1), ('once', 1), ('or', 4), ('twice', 1), ('she', 7), ('had', 3), ('peeped', 1), ('into', 1), ('book', 2), ('reading', 1), ('but', 3), ('it', 11), ('no', 1), ('pictures', 2), ('conversations', 1), ('in', 4), ('what', 1), ('is', 1), ('use', 1), ('a', 8), ("'", 3), ('thought', 2), ('without', 1), ('conversation', 1), ('so', 3), ('considering', 1), ('own', 1), ('mind', 2), ('as', 2), ('well', 1), ('could', 1), ('for', 2), ('hot', 1), ('day', 1), ('made', 1), ('feel', 1), ('sleepy', 1), ('stupid', 1), ('whether', 1), ('pleasure', 1), ('making', 1), ('daisy', 1), ('chain', 1), ('would', 1), ('be', 2), ('worth', 1), ('trouble', 1), ('getting', 1), ('up', 1), ('picking', 1), ('daisies', 1), ('when', 3), ('suddenly', 1), ('white', 1), ('rabbit', 5), ('with', 3), ('pink', 1), ('eyes', 1), ('ran', 2), ('close', 1), ('there', 1), ('remarkable', 1), ('that', 3), ('nor', 1), ('did', 1), ('think', 1), ('much', 1), ('out', 3), ('way', 1), ('hear', 1), ('say', 1), ('itself', 1), ('oh', 2), ('dear', 2), ('i', 1), ('shall', 1), ('late', 1), ('over', 1), ('afterwards', 1), ('occurred', 1), ('ought', 1), ('have', 1), ('wondered', 1), ('at', 3), ('this', 1), ('time', 2), ('all', 1), ('seemed', 1), ('quite', 1), ('natural', 1), ('actually', 1), ('took', 1), ('watch', 2), ('its', 1), ('waistcoat', 2), ('pocket', 2), ('looked', 1), ('then', 1), ('hurried', 1), ('started', 1), ('feet', 1), ('flashed', 1), ('across', 2), ('never', 1), ('before', 1), ('seen', 1), ('either', 1), ('take', 1), ('burning', 1), ('curiosity', 1), ('field', 1), ('after', 1), ('fortunately', 1), ('just', 1), ('see', 1), ('pop', 1), ('down', 1), ('large', 1), ('hole', 1), ('under', 1), ('hedge', 1)])
+```
+
+* Another thing that tokenizer tool provides is a dictionary of words and their  assigned integers.
+
+```python
+>>>print(tokenize.word_index)
+{'the': 1, 'it': 2, 'to': 3, 'of': 4, 'her': 5, 'and': 6, 'a': 7, 'she': 8, 'was': 9, 'rabbit': 10, 'alice': 11, 'very': 12, 'or': 13, 'in': 14, 'had': 15, 'but': 16, "'": 17, 'so': 18, 'when': 19, 'with': 20, 'that': 21, 'out': 22, 'at': 23, 'by': 24, 'sister': 25, 'on': 26, 'nothing': 27, 'book': 28, 'pictures': 29, 'thought': 30, 'mind': 31, 'as': 32, 'for': 33, 'be': 34, 'ran': 35, 'oh': 36, 'dear': 37, 'time': 38, 'watch': 39, 'waistcoat': 40, 'pocket': 41, 'across': 42, 'beginning': 43, 'get': 44, 'tired': 45, 'sitting': 46, 'bank': 47, 'having': 48, 'do': 49, 'once': 50, 'twice': 51, 'peeped': 52, 'into': 53, 'reading': 54, 'no': 55, 'conversations': 56, 'what': 57, 'is': 58, 'use': 59, 'without': 60, 'conversation': 61, 'considering': 62, 'own': 63, 'well': 64, 'could': 65, 'hot': 66, 'day': 67, 'made': 68, 'feel': 69, 'sleepy': 70, 'stupid': 71, 'whether': 72, 'pleasure': 73, 'making': 74, 'daisy': 75, 'chain': 76, 'would': 77, 'worth': 78, 'trouble': 79, 'getting': 80, 'up': 81, 'picking': 82, 'daisies': 83, 'suddenly': 84, 'white': 85, 'pink': 86, 'eyes': 87, 'close': 88, 'there': 89, 'remarkable': 90, 'nor': 91, 'did': 92, 'think': 93, 'much': 94, 'way': 95, 'hear': 96, 'say': 97, 'itself': 98, 'i': 99, 'shall': 100, 'late': 101, 'over': 102, 'afterwards': 103, 'occurred': 104, 'ought': 105, 'have': 106, 'wondered': 107, 'this': 108, 'all': 109, 'seemed': 110, 'quite': 111, 'natural': 112, 'actually': 113, 'took': 114, 'its': 115, 'looked': 116, 'then': 117, 'hurried': 118, 'started': 119, 'feet': 120, 'flashed': 121, 'never': 122, 'before': 123, 'seen': 124, 'either': 125, 'take': 126, 'burning': 127, 'curiosity': 128, 'field': 129, 'after': 130, 'fortunately': 131, 'just': 132, 'see': 133, 'pop': 134, 'down': 135, 'large': 136, 'hole': 137, 'under': 138, 'hedge': 139}
+```
+
+After we fitted the model, we use *text_to_matrix* create vectors of the texts. 
+
+```python 
+encoded_aliceText3 = tokenize.texts_to_matrix(aliceText3, mode='count')
+```
 
 
-
-
-
-
-
-
-
-
+```python 
+>>>print(encoded_aliceText3)
+[[0. 3. 2. 2. 3. 2. 2. 1. 1. 2. 0. 2. 1. 3. 1. 2. 1. 2. 0. 0. 0. 0. 0. 0.
+  1. 2. 1. 1. 2. 2. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 1. 1. 1. 1.
+  1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+  0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+  0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+  0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 4. 0. 0. 2. 3. 2. 2. 2. 1. 1. 0. 1. 0. 1. 0. 0. 0. 1. 1. 1. 0. 0. 0.
+  1. 0. 0. 0. 0. 0. 0. 1. 2. 1. 1. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+  0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+  1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 0. 0. 0. 0. 0. 0. 0.
+  0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+  0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+ [0. 6. 9. 7. 3. 3. 4. 5. 4. 2. 4. 2. 2. 1. 2. 1. 2. 1. 2. 2. 2. 3. 3. 3.
+  0. 0. 1. 1. 0. 0. 1. 1. 0. 1. 1. 1. 2. 2. 2. 2. 2. 2. 2. 0. 0. 0. 0. 0.
+  0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+  0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 1. 1. 1. 1. 1. 1.
+  1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+  1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]]
+```
 
 
 
