@@ -9,11 +9,14 @@ The basic definition of *modeling* is training the machine to do a certain type 
 
 
 #### The main objectives of this tutorial:
-> * Learn about types of data preparation before any modeling process: manual preparation, NLTK method.
-> * Learn about two major libraries that provides text preparation and encoding prcoess. 
+ * Learn about types of data preparation before any modeling process: manual preparation.
+ * Learn about two major libraries that provides text preparation and encoding prcoess. 
 #### Main terms that will be  frequently utilize in this tutorial:
-> * Tokenization.
-> * Vectorization (feature extraction).
+ * Tokenization.
+ * Vectorization (feature extraction).
+ * Term Frequency-Inverse Document (TDF-IF).
+ * Hashing.
+ * Word embeddings.  
 
 # Manaual Text Data Preparations
 The first step before fitting text to a machine learning is **cleaning** your data. Any text contains punctuations, upper cases, white spaces,some characters such as emojis. So, our  task is to prepare our text by splitting it words and deal with puncutation. We will use a text called *Alice's Adventures in Wonderland*. You can find it in the following link https://www.gutenberg.org/files/28885/28885.txt. <sup id="a1">[1](#f1)</sup>
@@ -46,6 +49,7 @@ aliceText
 
 ```
 To view the file after slicing the header, you can print **aliceText[:100]** as the following:
+
 ```python
 >>>print(aliceText[:100])
 "             alice's adventures in wonderland                            lewis carroll                 the millennium fulcrum edition 3.0                                 chapter i                     "
@@ -55,6 +59,7 @@ To view the file after slicing the header, you can print **aliceText[:100]** as 
 You will read the term *tokenization* in any NLP turorials or textbooks. For simplicity, it means breaking down a whole text into words or a string of characters. Each string is called *token*. In this section, we will turn alice's text into tokens or separate words.
 
 Alice's text contains punctuations (such as commas and qoutes), and also abbreviated items (such as she's in ...). You can use regular expression to extract these items. You can do it by either using regular expression or use a ready-python tool. Here, we will use a tool called **string.punctuation**, which has a list of punctuation, to remove the target punctuations. 
+
 ```markedown
 a list of punctuations !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
 ```
@@ -77,7 +82,7 @@ To view the stripped words:
 ```
 # Preparing Text Data with scikit-learn
 
-Before training your data, you need to enable the machine to identify each string. Since machines can only understand numerical characters, we need to encode each word into numbers either intergers or floating values. This encoding process is called *vectorization* or *feature extraction*. One of the common libraries that offer encoding tools is **scikit-learn**. <sup id="a2">[2](#f2)</sup> \
+Before training your data, you need to enable the machine to identify each string. Since machines can only understand numerical characters, we need to encode each word into numbers either intergers or floating values. This encoding process is called *vectorization* or *feature extraction*. One of the common libraries that offer encoding tools is **scikit-learn**. <sup id="a2">[2](#f2)</sup> 
 In this section, we will use three tools in scikit-learn:
 * **CountVectorizer** is a tool that converts a text to word count vectors.
 * **TfidfVectorizer** is a tool that converts a text to word frequency.
@@ -156,7 +161,7 @@ Finally, let's print the array of the encoded vectors.
 After this step, the ecoded vectors are ready to be used in a predictive model.
 
 
-### Tfidf Vectorizer tool
+### Tf-idf Vectorizer tool
 We used CountVectorizer function to count the words, which is a very basic method. A serious problem that you will face is that some words such as function words will be highly frequent, which means that providing their counts will not be helpful. Thus, machine learning specialists suggest an alternative method which is *word frequency* instead of the word counts. They created a method called *Term Frequency - Inverse Document*. The term is hypentated which carries two meanings. First, *term frequency* which means the count of words within a document. The other part of term *Inverse Document Frequency* meaning downscale words that are freqeunt across documents. 
 
 In other words, Tfidf vectorization method will provide the frequeny words in a document but not across documents. 
@@ -258,7 +263,7 @@ The output means that the number of vocabulary learned from *aliceText* is 136.
   0.12924678 0.         0.         0.        ]]
 ```
 
-## HashingVeectorizer
+## Hashing Vectorizer
 So far, we learned how to do counting and frequecies of words of a text. However, if we have a corpus that contain millions of words, we will need large vectors for encoding these words. As a consequence, our machine will need more memory to process them. The *hashing* method is a process that uses a one way hash of words to convert them into intergers.  However, the one-way hashing encoding has a major drawback which is once you convert words into intergers, you cannot encode them back to words. 
 
 ```python 
@@ -304,6 +309,13 @@ vector_to_array = vector.toarray()
 
 # Preparing Text Data With Keras 
 
+Before we implement Keras, we have to define a few of terms:
+
+1. *Word embedding*: a method of representing words that have similar meanings to have similar representations. For more details, see Jay Alammar <sup id="a3">[3](#f3)</sup>  has a detailed tutorial
+2. *Word2Vec* : a mathmatical method used for  learning word embeddings from large datasets
+
+
+
 
 
 
@@ -315,4 +327,5 @@ vector_to_array = vector.toarray()
 
 <b id="f1">1</b> Carroll, L. Alice's Adventures in Wonderland. Project Gutenberg, May 19, 2009. https://www.gutenberg.org/files/28885/28885.txt. 
 
-<b id="f2">2</b> Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. Journal of Machine Learning Research, 12, 2825–2830. 
+<b id="f2">2</b> Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. Journal of Machine Learning Research, 12, 2825–2830.
+<b id="f3">3</b>  https://jalammar.github.io/illustrated-word2vec/
