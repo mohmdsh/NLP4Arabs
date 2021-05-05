@@ -2,25 +2,27 @@
 
 
 
-**A major question. What does** *modeling* **in the title indicate?**
-
-The basic definition of *modeling* is training the machine to do a certain type of task. 
-** A 
 
 
 #### The main objectives of this tutorial:
- * Learn about types of data preparation before any modeling process: manual preparation.
- * Learn about two major libraries that provides text preparation and encoding prcoess. 
-#### Main terms that will be  frequently utilize in this tutorial:
+ * Learn how to manually preparate your data before any modeling process:
+ * Learn about two major libraries that  text preparation and encoding prcoess. 
+#### Main terms that will be  frequently utilize in this tutorial:  
+ * Modeling.
  * Tokenization.
  * Vectorization (feature extraction).
  * Term Frequency-Inverse Document (TDF-IF).
  * Hashing.
- * Word embeddings.  
+ * 
+### Question  
+What does** *modeling* **in the title indicate?**
+
+The basic definition of *modeling* is training the machine to do a certain type of task. 
+ 
 
 # Manaual Text Data Preparations
 The first step before fitting text to a machine learning is **cleaning** your data. Any text contains punctuations, upper cases, white spaces,some characters such as emojis. So, our  task is to prepare our text by splitting it words and deal with puncutation. We will use a text called *Alice's Adventures in Wonderland*. You can find it in the following link https://www.gutenberg.org/files/28885/28885.txt. <sup id="a1">[1](#f1)</sup>
-## Cleaning the header and table of contents in Alice's text
+### Cleaning the header and table of contents in Alice's text
 
 This text -- available by  Gutenberg online library, contains a header which is conmposed of Gutenberg project's  introduction, and a table of contents. You have manually to cleany the file by doing the following:
  * Save the file in your local machine in the same directory of the python file.
@@ -55,7 +57,7 @@ To view the file after slicing the header, you can print **aliceText[:100]** as 
 "             alice's adventures in wonderland                            lewis carroll                 the millennium fulcrum edition 3.0                                 chapter i                     "
 ```
 
-## Cleaning the text manually
+### Cleaning the text from 
 You will read the term *tokenization* in any NLP turorials or textbooks. For simplicity, it means breaking down a whole text into words or a string of characters. Each string is called *token*. In this section, we will turn alice's text into tokens or separate words.
 
 Alice's text contains punctuations (such as commas and qoutes), and also abbreviated items (such as she's in ...). You can use regular expression to extract these items. You can do it by either using regular expression or use a ready-python tool. Here, we will use a tool called **string.punctuation**, which has a list of punctuation, to remove the target punctuations. 
@@ -88,7 +90,7 @@ In this section, we will use three tools in scikit-learn:
 * **TfidfVectorizer** is a tool that converts a text to word frequency.
 * **HashingVectorizer** is a tool that converts a text to unique intergers. 
 ## Bag-of-words model
-As mentioned above, we need to convert any text into numbers to feed it to a machine learning model. Usually, a text, which is our *input*, must be fed to a model to predict the *output*. One of the simples and old-fashioned models is the **Bag-of-Words** model  which is a method of converting words into numbers by disregarding the order of words in its context. \
+As mentioned above, we need to convert any text into numbers to feed it to a machine learning model. Usually, a text, which is our *input*, must be fed to a model to predict the *output*. One of the simples and old-fashioned models is the **Bag-of-Words** model  which is a method of converting words into numbers by disregarding the order of words in its context. 
 
 ### CountVectorizer tool
 This tool provides a way to tokenize texts, and encode  these tokenzied items. To do so, we do the following steps:
