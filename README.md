@@ -314,80 +314,62 @@ Keras is a python library that provides some tools to prepare your data before m
 * Hashing_trick
 * One_hot encoder.
 
+### text_to_word_sequence() Tool
+
 Keras provides a good tool for tokenizing your corpus. This tool is *text_to_word_sequence*. Again, we will use *aliceText* from previous sections. 
 
 ```python
 from keras.preprocessing.text import text_to_word_sequence
 
-aliceText = [" Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do:  once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, `and what is the use of a book,' thought Alice `without pictures or conversation?'", " So she was considering in her own mind (as well as she could,for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.", "There was nothing so VERY remarkable in that; nor did Alice think it so VERY much out of the way to hear the Rabbit say to itself, `Oh dear!  Oh dear!  I shall be late!'  (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually TOOK A WATCH OUT OF ITS WAISTCOAT-POCKET, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge."]
+aliceText = " Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do:  once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, `and what is the use of a book,' thought Alice `without pictures or conversation?' "
 
 # tokenize the document
 tokenized_alice = text_to_word_sequence(aliceText)
 ```
 
-* Show the tokenized item
+* Show some tokenized items
 ```python 
->>>print(tokenized_alice)
-['alice',
- 'was',
- 'beginning',
- 'to',
- 'get',
- 'very',
- 'tired',
- 'of',
- 'sitting',
- 'by',
- 'her',
- 'sister',
- 'on',
- 'the',
- 'bank',
- 'and',
- 'of',
- 'having',
- 'nothing',
- 'to',
- 'do',
- 'once',
- 'or',
- 'twice',
- 'she',
- 'had',
- 'peeped',
- 'into',
- 'the',
- 'book',
- 'her',
- 'sister',
- 'was',
- 'reading',
- 'but',
- 'it',
- 'had',
- 'no',
- 'pictures',
- 'or',
- 'conversations',
- 'in',
- 'it',
- 'and',
- 'what',
- 'is',
- 'the',
- 'use',
- 'of',
- 'a',
- 'book',
- "'",
- 'thought',
- 'alice',
- 'without',
- 'pictures',
- 'or',
- 'conversation',
- "'"]
+>>>print(tokenized_alice[:100])
+['alice', 'was', 'beginning', 'to', 'get', 'very', 'tired', 'of', 'sitting', 'by', 'her', 'sister', 'on', 'the', 'bank', 'and', 'of', 'having', 'nothing', 'to', 'do', 'once', 'or', 'twice', 'she', 'had', 'peeped', 'into', 'the', 'book', 'her', 'sister', 'was', 'reading', 'but', 'it', 'had', 'no', 'pictures', 'or', 'conversations', 'in', 'it', 'and', 'what', 'is', 'the', 'use', 'of', 'a', 'book', "'", 'thought', 'alice', 'without', 'pictures', 'or', 'conversation', "'"]
 ```
+
+### one_hot() Tool
+
+Keras provides a tool that can tokenize a text and vectorize into intergers. Let's apply it to the same *aliceText*:
+
+```python 
+from keras.preprocessing.text import one_hot
+
+aliceText = " Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do:  once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, `and what is the use of a book,' thought Alice `without pictures or conversation?' "
+
+
+alice_to_set = set(text_to_word_sequence(aliceText))
+
+vocab_size = len(alice_to_set)
+
+vector = one_hot(aliceText,  round(vocab_size*1.3))
+```
+
+Now, let's walk through the code. First we read the file that has the text. Then, we need to tokenize the text and convert the tokenize items into a set to get its size. 
+The next step is to get the size in order to feed it into one_hot() function. 
+
+* Let's show the converted set.
+
+```python
+print(alice_to_set)
+{'twice', 'once', 'what', 'peeped', 'use', 'no', 'beginning', 'thought', 'was', 'do', 'but', 'is', 'into', 'the', 'it', 'a', 'in', 'having', 'pictures', 'nothing', "'", 'without', 'get', 'conversation', 'her', 'by', 'of', 'had', 'reading', 'tired', 'sister', 'bank', 'conversations', 'very', 'or', 'on', 'book', 'and', 'she', 'alice', 'sitting', 'to'}
+```
+* Let's show the size of the set.
+```python 
+>>>print(vocab_size)
+42
+```
+* Let's show the converted item to one hot enocding.
+```python 
+print(vector)
+[41, 31, 50, 54, 52, 18, 13, 13, 1, 54, 10, 40, 21, 22, 3, 3, 13, 47, 11, 54, 36, 14, 14, 8, 34, 16, 10, 3, 22, 42, 10, 40, 31, 38, 27, 1, 16, 52, 25, 14, 4, 10, 1, 3, 8, 15, 22, 29, 13, 11, 42, 37, 43, 41, 44, 25, 14, 50, 37]
+```
+
 
 
 
